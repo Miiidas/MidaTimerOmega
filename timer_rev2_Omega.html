@@ -30,7 +30,7 @@
         left: 20px;
     }
 
-    #vistoggle {
+    #hide_show {
         width: 32px;
         height: 32px;
         position: relative;
@@ -41,13 +41,13 @@
     <script src='https://ngld.github.io/OverlayPlugin/assets/shared/common.min.js'></script>
     <script>
             function hideelements() {
-
+        var togglebutton = document.getElementById('hide_show');
         if (encounterrr.style.visibility == 'visible') { //隠す処理
             encounterrr.style.visibility = 'hidden';
-            document.getElementById('vistoggle').setAttribute('src', 'eye_open.png');
+            togglebutton.setAttribute('src', 'eye_open.png');
         } else { //出す処理
             encounterrr.style.visibility = 'visible';
-            document.getElementById('vistoggle').setAttribute('src', 'eye_close.png');
+            togglebutton.setAttribute('src', 'eye_close.png');
         }
     }
     </script>
@@ -57,7 +57,7 @@
         <div id='encounter'>
             00:00
         </div>
-        <div id='vistoggle' onclick='hideelements()'>
+        <div id='hide_show' onclick='hideelements()'>
             <img src='eye_open.png' />
         </div>
     <script>
@@ -65,8 +65,8 @@
     if (localStorage.getItem('text size') != null) {
         document.getElementById('encounter').style.fontSize = localStorage.getItem('text size');
         document.getElementById('encounter').style.color = localStorage.getItem('text color');
-        document.getElementById('vistoggle').style.left = localStorage.getItem('iconXPos');
-        document.getElementById('vistoggle').style.top = localStorage.getItem('iconYPos');
+        document.getElementById('hide_show').style.left = localStorage.getItem('iconXPos');
+        document.getElementById('hide_show').style.top = localStorage.getItem('iconYPos');
     } else {
         localStorage.setItem('text size', '64');
         localStorage.setItem('text color', '#165e83');
@@ -77,7 +77,6 @@
     var encounterrr = document.getElementById('encounter');
 
     // タイマー用関数、タイマーが動いているかどうかのフラグ管理
-    var omegaProtocol = 0;
     var timeA = 0;
     var timeB = 0;
     var textA = '00';
@@ -128,15 +127,16 @@
                 counttime = countptime.substr(countptime.indexOf('\|\|戦闘開始まで') + 8, 2).replace(/[^0-9]/g, '');
                 console.log('pat13:' + counttime);
             }
+
+            
             isCountActive = true;
         } else if (JSON.stringify(data).search('により、戦闘開始カウントがキャンセルされました。') !== -1){//カウントキャンセル時
             isTimerActive = false;
             isCountActive = false;
             currentTime = '00:00';
         }
-
         
-            if (JSON.stringify(data).search('\|オメガM\|ワタシはオメガであり、アルファである……。 弱きヒトの特徴を実装し、真なる強きを求めましょう。\|') !== -1) {//P2突入
+                    if (JSON.stringify(data).search('\|オメガM\|ワタシはオメガであり、アルファである……。 弱きヒトの特徴を実装し、真なる強きを求めましょう。\|') !== -1) {//P2突入
                 timeRaw = 0;
                 currentTime = '00:00';
                 isTimerActive = true;
@@ -149,9 +149,9 @@
             } 
 
         //開始/終了時に可視性を切り替え
-        if (JSON.stringify(data).search('」の攻略を開始した。') !== -1) {
+        if (JSON.stringify(data).search('「絶オメガ検証戦」の攻略を開始した。') !== -1) {
             encounterrr.style.visibility = 'visible';
-        } else if (JSON.stringify(data).search('」の攻略を終了した。') !== -1) {
+        } else if (JSON.stringify(data).search('「絶オメガ検証戦」の攻略を終了した。') !== -1) {
             encounterrr.style.visibility = 'hidden';
         }
     }
