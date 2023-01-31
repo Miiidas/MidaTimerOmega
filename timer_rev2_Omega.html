@@ -136,12 +136,12 @@
             currentTime = '00:00';
         }
 
-                    if (JSON.stringify(data).search('\|オメガM\|ワタシはオメガであり、アルファである……。 弱きヒトの特徴を実装し、真なる強きを求めましょう。\|') !== -1) {//P2突入
+                    if (JSON.stringify(data).search('/\|オメガM\|ワタシはオメガであり、アルファである……。 弱きヒトの特徴を実装し、真なる強きを求めましょう。\|/') !== -1) {//P2突入
                 timeRaw = 0;
                 currentTime = '00:00';
                 isTimerActive = true;
                 isCountActive = false;
-            } else if(JSON.stringify(data).search('\|オメガ\|判定……ヒトの姿や行動を模倣することは、 戦闘能力の向上に、寄与しないと判断します……。\|') !== -1) {//P3突入
+            } else if(JSON.stringify(data).search('/\|オメガ\|判定……ヒトの姿や行動を模倣することは、 戦闘能力の向上に、寄与しないと判断します……。\|/') !== -1) {//P3突入
                 timeRaw = 0;
                 currentTime = '00:00';
                 isTimerActive = true;
@@ -151,8 +151,12 @@
         //開始/終了時に可視性を切り替え
         if (JSON.stringify(data).search('「絶オメガ検証戦」の攻略を開始した。') !== -1) {
             encounterrr.style.visibility = 'visible';
+            isTimerActive = false;
+            isCountActive = false;
         } else if (JSON.stringify(data).search('「絶オメガ検証戦」の攻略を終了した。') !== -1) {
             encounterrr.style.visibility = 'hidden';
+            isTimerActive = false;
+            isCountActive = false;
         }
     }
 
