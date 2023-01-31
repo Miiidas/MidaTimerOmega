@@ -17,7 +17,7 @@
     }
 
     #encounter {
-        color: #EBCA1B;
+        color: #165e83;
         text-shadow: 1px -1px 5px #000000, 1px 1px 5px #000000, -1px 1px 5px #000000, -1px -1px 5px #000000;
         text-align: left;
         vertical-align: text-top;
@@ -63,15 +63,15 @@
     <script>
     //localstorage設定
     if (localStorage.getItem('text size') != null) {
-        document.getElementById('encounter').style.fontSize = localStorage.getItem('text size');
-        document.getElementById('encounter').style.color = localStorage.getItem('text color');
-        document.getElementById('hide_show').style.left = localStorage.getItem('iconXPos');
-        document.getElementById('hide_show').style.top = localStorage.getItem('iconYPos');
+        document.getElementById('encounter').style.fontSize = localStorage.getItem('text sizeO');
+        document.getElementById('encounter').style.color = localStorage.getItem('text colorO');
+        document.getElementById('hide_show').style.left = localStorage.getItem('iconXPosO');
+        document.getElementById('hide_show').style.top = localStorage.getItem('iconYPosO');
     } else {
-        localStorage.setItem('text size', '64');
-        localStorage.setItem('text color', '#EBCA1B');
-        localStorage.setItem('iconXPos', '190');
-        localStorage.setItem('iconYPos', '-190');
+        localStorage.setItem('text sizeO', '64');
+        localStorage.setItem('text colorO', '#165e83');
+        localStorage.setItem('iconXPosO', '190');
+        localStorage.setItem('iconYPosO', '-190');
     }
 
     var encounterrr = document.getElementById('encounter');
@@ -136,10 +136,22 @@
             currentTime = '00:00';
         }
 
+                    if (JSON.stringify(data).search('\|オメガM\|ワタシはオメガであり、アルファである……。 弱きヒトの特徴を実装し、真なる強きを求めましょう。\|') !== -1) {//P2突入
+                timeRaw = 0;
+                currentTime = '00:00';
+                isTimerActive = true;
+                isCountActive = false;
+            } else if(JSON.stringify(data).search('\|オメガ\|判定……ヒトの姿や行動を模倣することは、 戦闘能力の向上に、寄与しないと判断します……。\|') !== -1) {//P3突入
+                timeRaw = 0;
+                currentTime = '00:00';
+                isTimerActive = true;
+                isCountActive = false;
+            } 
+
         //開始/終了時に可視性を切り替え
-        if (JSON.stringify(data).search('」の攻略を開始した。') !== -1) {
+        if (JSON.stringify(data).search('「絶オメガ検証戦」の攻略を開始した。') !== -1) {
             encounterrr.style.visibility = 'visible';
-        } else if (JSON.stringify(data).search('」の攻略を終了した。') !== -1) {
+        } else if (JSON.stringify(data).search('「絶オメガ検証戦」の攻略を終了した。') !== -1) {
             encounterrr.style.visibility = 'hidden';
         }
     }
