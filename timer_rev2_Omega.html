@@ -17,7 +17,7 @@
     }
 
     #encounter {
-        color: #EBCA1B;
+        color: #165e83;
         text-shadow: 1px -1px 5px #000000, 1px 1px 5px #000000, -1px 1px 5px #000000, -1px -1px 5px #000000;
         text-align: left;
         vertical-align: text-top;
@@ -63,10 +63,10 @@
     <script>
     //localstorage設定
     if (localStorage.getItem('text size') != null) {
-        document.getElementById('encounter').style.fontSize = localStorage.getItem('text size');
-        document.getElementById('encounter').style.color = localStorage.getItem('text color');
-        document.getElementById('vistoggle').style.left = localStorage.getItem('iconXPos');
-        document.getElementById('vistoggle').style.top = localStorage.getItem('iconYPos');
+        document.getElementById('encounter').style.fontSize = localStorage.getItem('text sizeO');
+        document.getElementById('encounter').style.color = localStorage.getItem('text colorO');
+        document.getElementById('vistoggle').style.left = localStorage.getItem('iconXPosO');
+        document.getElementById('vistoggle').style.top = localStorage.getItem('iconYPosO');
     } else {
         localStorage.setItem('text size', '64');
         localStorage.setItem('text color', '#165e83');
