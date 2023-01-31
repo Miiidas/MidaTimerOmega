@@ -63,15 +63,15 @@
     <script>
     //localstorage設定
     if (localStorage.getItem('text size') != null) {
-        document.getElementById('encounter').style.fontSize = localStorage.getItem('text sizeO');
-        document.getElementById('encounter').style.color = localStorage.getItem('text colorO');
-        document.getElementById('vistoggle').style.left = localStorage.getItem('iconXPosO');
-        document.getElementById('vistoggle').style.top = localStorage.getItem('iconYPosO');
+        document.getElementById('encounter').style.fontSize = localStorage.getItem('text size');
+        document.getElementById('encounter').style.color = localStorage.getItem('text color');
+        document.getElementById('vistoggle').style.left = localStorage.getItem('iconXPos');
+        document.getElementById('vistoggle').style.top = localStorage.getItem('iconYPos');
     } else {
-        localStorage.setItem('text sizeO', '64');
-        localStorage.setItem('text colorO', '#165e83');
-        localStorage.setItem('iconXPosO', '190');
-        localStorage.setItem('iconYPosO', '-190');
+        localStorage.setItem('text size', '64');
+        localStorage.setItem('text color', '#165e83');
+        localStorage.setItem('iconXPos', '190');
+        localStorage.setItem('iconYPos', '-190');
     }
 
     var encounterrr = document.getElementById('encounter');
